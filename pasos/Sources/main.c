@@ -4,8 +4,11 @@
 //unsigned char arreglo_medio_paso[]={0x08,0x0C,0x04,0x06,0x02,0x03,0x01,0x09}; //active high
 //unsigned char arreglo_medio_paso[]={0x0E,0x0C,0x0D,0x09,0x0B,0x03,0x07,0x06}; //chacho
 //unsigned char arreglo_medio_paso[]={0b11110111, 0b11110011, 0b11111011, 0b11111001, 0b11111101 ,0b11111100, 0b11111110, 0b11110110};
-	unsigned char arreglo_medio_paso[]={0b00001000, 0b00001100, 0b00000100, 0b00000110, 0b00000010 ,0b00000011, 0b00000001, 0b00001001}; //chacho negadp
-unsigned char conteo = 0; 
+#define MOTOR_STRING_PORT				B	/* Specify the digital port where the LED string is connected */
+#define MOTOR_STRING_PIN_START		0   /* Specify the starting pin on the digital port where teh LED String is connected */
+
+unsigned char arreglo_medio_paso[]={0b00001000, 0b00001100, 0b00000100, 0b00000110, 0b00000010 ,0b00000011, 0b00000001, 0b00001001}; //chacho negadp
+unsigned char conteo = 0;
 unsigned char i=0;
 unsigned char ADC_value;
 unsigned char speed, range;
@@ -56,10 +59,10 @@ void main(void) {
   MTIMMOD=250;
   PTAPE_PTAPE2=1;
   //adc
-  APCTL1_ADPC0=1;//pin adpc0 pa0 entrada analogica 
+  APCTL1_ADPC0=1;//pin adpc0 pa0 entrada analogica
   ADCSC1=0x60;//una conversion
-  
-  
+
+
   for(;;) {
     __RESET_WATCHDOG();	/* feeds the dog */
 
