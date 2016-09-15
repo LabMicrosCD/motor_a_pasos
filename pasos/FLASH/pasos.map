@@ -23,8 +23,8 @@ Entry point: 0xE07B (_Startup)
 _startupData is allocated at 0xE084 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x100     10
-  _Copy    *toCopyDownBeg 0xE0DC
+  _Range   pZeroOut       0x100     13
+  _Copy    *toCopyDownBeg 0xE103
 } _startupData;
 
 *********************************************************************************************
@@ -34,90 +34,92 @@ Section Name                    Size  Type     From       To       Segment
 .data                              8   R/W      0x100      0x107   RAM
 .init                            132     R     0xE000     0xE083   ROM
 .startData                        14     R     0xE084     0xE091   ROM
-.text                             74     R     0xE092     0xE0DB   ROM
-.copy                             14     R     0xE0DC     0xE0E9   ROM
-.abs_section_ffe6                  2     R     0xFFE6     0xFFE7   .absSeg0
-.abs_section_0                     1   N/I        0x0        0x0   .absSeg1
-.abs_section_1                     1   N/I        0x1        0x1   .absSeg2
-.abs_section_2                     1   N/I        0x2        0x2   .absSeg3
-.abs_section_3                     1   N/I        0x3        0x3   .absSeg4
-.abs_section_c                     1   N/I        0xC        0xC   .absSeg5
-.abs_section_d                     1   N/I        0xD        0xD   .absSeg6
-.abs_section_e                     1   N/I        0xE        0xE   .absSeg7
-.abs_section_f                     1   N/I        0xF        0xF   .absSeg8
-.abs_section_10                    1   N/I       0x10       0x10   .absSeg9
-.abs_section_11                    1   N/I       0x11       0x11   .absSeg10
-.abs_section_16                    1   N/I       0x16       0x16   .absSeg11
-.abs_section_17                    1   N/I       0x17       0x17   .absSeg12
-.abs_section_1a                    1   N/I       0x1A       0x1A   .absSeg13
-.abs_section_22                    1   N/I       0x22       0x22   .absSeg14
-.abs_section_23                    1   N/I       0x23       0x23   .absSeg15
-.abs_section_24                    1   N/I       0x24       0x24   .absSeg16
-.abs_section_25                    1   N/I       0x25       0x25   .absSeg17
-.abs_section_26                    1   N/I       0x26       0x26   .absSeg18
-.abs_section_27                    1   N/I       0x27       0x27   .absSeg19
-.abs_section_28                    1   N/I       0x28       0x28   .absSeg20
-.abs_section_29                    1   N/I       0x29       0x29   .absSeg21
-.abs_section_2a                    1   N/I       0x2A       0x2A   .absSeg22
-.abs_section_2b                    1   N/I       0x2B       0x2B   .absSeg23
-.abs_section_2d                    1   N/I       0x2D       0x2D   .absSeg24
-.abs_section_30                    1   N/I       0x30       0x30   .absSeg25
-.abs_section_31                    1   N/I       0x31       0x31   .absSeg26
-.abs_section_32                    1   N/I       0x32       0x32   .absSeg27
-.abs_section_33                    1   N/I       0x33       0x33   .absSeg28
-.abs_section_34                    1   N/I       0x34       0x34   .absSeg29
-.abs_section_38                    1   N/I       0x38       0x38   .absSeg30
-.abs_section_39                    1   N/I       0x39       0x39   .absSeg31
-.abs_section_3a                    1   N/I       0x3A       0x3A   .absSeg32
-.abs_section_3b                    1   N/I       0x3B       0x3B   .absSeg33
-.abs_section_3c                    1   N/I       0x3C       0x3C   .absSeg34
-.abs_section_3d                    1   N/I       0x3D       0x3D   .absSeg35
-.abs_section_3e                    1   N/I       0x3E       0x3E   .absSeg36
-.abs_section_3f                    1   N/I       0x3F       0x3F   .absSeg37
-.abs_section_40                    1   N/I       0x40       0x40   .absSeg38
-.abs_section_45                    1   N/I       0x45       0x45   .absSeg39
-.abs_section_48                    1   N/I       0x48       0x48   .absSeg40
-.abs_section_1800                  1   N/I     0x1800     0x1800   .absSeg41
-.abs_section_1801                  1   N/I     0x1801     0x1801   .absSeg42
-.abs_section_1802                  1   N/I     0x1802     0x1802   .absSeg43
-.abs_section_1803                  1   N/I     0x1803     0x1803   .absSeg44
-.abs_section_1808                  1   N/I     0x1808     0x1808   .absSeg45
-.abs_section_1809                  1   N/I     0x1809     0x1809   .absSeg46
-.abs_section_180a                  1   N/I     0x180A     0x180A   .absSeg47
-.abs_section_180c                  1   N/I     0x180C     0x180C   .absSeg48
-.abs_section_1816                  1   N/I     0x1816     0x1816   .absSeg49
-.abs_section_1817                  1   N/I     0x1817     0x1817   .absSeg50
-.abs_section_1818                  1   N/I     0x1818     0x1818   .absSeg51
-.abs_section_1820                  1   N/I     0x1820     0x1820   .absSeg52
-.abs_section_1821                  1   N/I     0x1821     0x1821   .absSeg53
-.abs_section_1823                  1   N/I     0x1823     0x1823   .absSeg54
-.abs_section_1824                  1   N/I     0x1824     0x1824   .absSeg55
-.abs_section_1825                  1   N/I     0x1825     0x1825   .absSeg56
-.abs_section_1826                  1   N/I     0x1826     0x1826   .absSeg57
-.abs_section_1840                  1   N/I     0x1840     0x1840   .absSeg58
-.abs_section_1841                  1   N/I     0x1841     0x1841   .absSeg59
-.abs_section_1842                  1   N/I     0x1842     0x1842   .absSeg60
-.abs_section_1844                  1   N/I     0x1844     0x1844   .absSeg61
-.abs_section_1845                  1   N/I     0x1845     0x1845   .absSeg62
-.abs_section_1846                  1   N/I     0x1846     0x1846   .absSeg63
-.abs_section_12                    2   N/I       0x12       0x13   .absSeg64
-.abs_section_14                    2   N/I       0x14       0x15   .absSeg65
-.abs_section_20                    2   N/I       0x20       0x21   .absSeg66
-.abs_section_41                    2   N/I       0x41       0x42   .absSeg67
-.abs_section_43                    2   N/I       0x43       0x44   .absSeg68
-.abs_section_46                    2   N/I       0x46       0x47   .absSeg69
-.abs_section_49                    2   N/I       0x49       0x4A   .absSeg70
-.abs_section_1806                  2   N/I     0x1806     0x1807   .absSeg71
-.abs_section_1810                  2   N/I     0x1810     0x1811   .absSeg72
-.abs_section_1812                  2   N/I     0x1812     0x1813   .absSeg73
-.abs_section_1814                  2   N/I     0x1814     0x1815   .absSeg74
+.text                            113     R     0xE092     0xE102   ROM
+.copy                             14     R     0xE103     0xE110   ROM
+.abs_section_ffd8                  2     R     0xFFD8     0xFFD9   .absSeg0
+.abs_section_ffe6                  2     R     0xFFE6     0xFFE7   .absSeg1
+.abs_section_0                     1   N/I        0x0        0x0   .absSeg2
+.abs_section_1                     1   N/I        0x1        0x1   .absSeg3
+.abs_section_2                     1   N/I        0x2        0x2   .absSeg4
+.abs_section_3                     1   N/I        0x3        0x3   .absSeg5
+.abs_section_c                     1   N/I        0xC        0xC   .absSeg6
+.abs_section_d                     1   N/I        0xD        0xD   .absSeg7
+.abs_section_e                     1   N/I        0xE        0xE   .absSeg8
+.abs_section_f                     1   N/I        0xF        0xF   .absSeg9
+.abs_section_10                    1   N/I       0x10       0x10   .absSeg10
+.abs_section_11                    1   N/I       0x11       0x11   .absSeg11
+.abs_section_16                    1   N/I       0x16       0x16   .absSeg12
+.abs_section_17                    1   N/I       0x17       0x17   .absSeg13
+.abs_section_1a                    1   N/I       0x1A       0x1A   .absSeg14
+.abs_section_22                    1   N/I       0x22       0x22   .absSeg15
+.abs_section_23                    1   N/I       0x23       0x23   .absSeg16
+.abs_section_24                    1   N/I       0x24       0x24   .absSeg17
+.abs_section_25                    1   N/I       0x25       0x25   .absSeg18
+.abs_section_26                    1   N/I       0x26       0x26   .absSeg19
+.abs_section_27                    1   N/I       0x27       0x27   .absSeg20
+.abs_section_28                    1   N/I       0x28       0x28   .absSeg21
+.abs_section_29                    1   N/I       0x29       0x29   .absSeg22
+.abs_section_2a                    1   N/I       0x2A       0x2A   .absSeg23
+.abs_section_2b                    1   N/I       0x2B       0x2B   .absSeg24
+.abs_section_2d                    1   N/I       0x2D       0x2D   .absSeg25
+.abs_section_30                    1   N/I       0x30       0x30   .absSeg26
+.abs_section_31                    1   N/I       0x31       0x31   .absSeg27
+.abs_section_32                    1   N/I       0x32       0x32   .absSeg28
+.abs_section_33                    1   N/I       0x33       0x33   .absSeg29
+.abs_section_34                    1   N/I       0x34       0x34   .absSeg30
+.abs_section_38                    1   N/I       0x38       0x38   .absSeg31
+.abs_section_39                    1   N/I       0x39       0x39   .absSeg32
+.abs_section_3a                    1   N/I       0x3A       0x3A   .absSeg33
+.abs_section_3b                    1   N/I       0x3B       0x3B   .absSeg34
+.abs_section_3c                    1   N/I       0x3C       0x3C   .absSeg35
+.abs_section_3d                    1   N/I       0x3D       0x3D   .absSeg36
+.abs_section_3e                    1   N/I       0x3E       0x3E   .absSeg37
+.abs_section_3f                    1   N/I       0x3F       0x3F   .absSeg38
+.abs_section_40                    1   N/I       0x40       0x40   .absSeg39
+.abs_section_45                    1   N/I       0x45       0x45   .absSeg40
+.abs_section_48                    1   N/I       0x48       0x48   .absSeg41
+.abs_section_1800                  1   N/I     0x1800     0x1800   .absSeg42
+.abs_section_1801                  1   N/I     0x1801     0x1801   .absSeg43
+.abs_section_1802                  1   N/I     0x1802     0x1802   .absSeg44
+.abs_section_1803                  1   N/I     0x1803     0x1803   .absSeg45
+.abs_section_1808                  1   N/I     0x1808     0x1808   .absSeg46
+.abs_section_1809                  1   N/I     0x1809     0x1809   .absSeg47
+.abs_section_180a                  1   N/I     0x180A     0x180A   .absSeg48
+.abs_section_180c                  1   N/I     0x180C     0x180C   .absSeg49
+.abs_section_1816                  1   N/I     0x1816     0x1816   .absSeg50
+.abs_section_1817                  1   N/I     0x1817     0x1817   .absSeg51
+.abs_section_1818                  1   N/I     0x1818     0x1818   .absSeg52
+.abs_section_1820                  1   N/I     0x1820     0x1820   .absSeg53
+.abs_section_1821                  1   N/I     0x1821     0x1821   .absSeg54
+.abs_section_1823                  1   N/I     0x1823     0x1823   .absSeg55
+.abs_section_1824                  1   N/I     0x1824     0x1824   .absSeg56
+.abs_section_1825                  1   N/I     0x1825     0x1825   .absSeg57
+.abs_section_1826                  1   N/I     0x1826     0x1826   .absSeg58
+.abs_section_1840                  1   N/I     0x1840     0x1840   .absSeg59
+.abs_section_1841                  1   N/I     0x1841     0x1841   .absSeg60
+.abs_section_1842                  1   N/I     0x1842     0x1842   .absSeg61
+.abs_section_1844                  1   N/I     0x1844     0x1844   .absSeg62
+.abs_section_1845                  1   N/I     0x1845     0x1845   .absSeg63
+.abs_section_1846                  1   N/I     0x1846     0x1846   .absSeg64
+.abs_section_12                    2   N/I       0x12       0x13   .absSeg65
+.abs_section_14                    2   N/I       0x14       0x15   .absSeg66
+.abs_section_20                    2   N/I       0x20       0x21   .absSeg67
+.abs_section_41                    2   N/I       0x41       0x42   .absSeg68
+.abs_section_43                    2   N/I       0x43       0x44   .absSeg69
+.abs_section_46                    2   N/I       0x46       0x47   .absSeg70
+.abs_section_49                    2   N/I       0x49       0x4A   .absSeg71
+.abs_section_1806                  2   N/I     0x1806     0x1807   .absSeg72
+.abs_section_1810                  2   N/I     0x1810     0x1811   .absSeg73
+.abs_section_1812                  2   N/I     0x1812     0x1813   .absSeg74
+.abs_section_1814                  2   N/I     0x1814     0x1815   .absSeg75
 .bss                               2   R/W      0x108      0x109   RAM
-.stack                            64   R/W      0x10A      0x149   RAM
-.vectSeg75_vect                    2     R     0xFFFE     0xFFFF   .vectSeg75
+.common                            3   R/W      0x10A      0x10C   RAM
+.stack                            64   R/W      0x10D      0x14C   RAM
+.vectSeg76_vect                    2     R     0xFFFE     0xFFFF   .vectSeg76
 
 Summary of section sizes per section type:
-READ_ONLY (R):          EE (dec:      238)
-READ_WRITE (R/W):       4A (dec:       74)
+READ_ONLY (R):         117 (dec:      279)
+READ_WRITE (R/W):       4D (dec:       77)
 NO_INIT (N/I):          55 (dec:       85)
 
 *********************************************************************************************
@@ -132,13 +134,19 @@ OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 MODULE:                 -- main_c.obj --
 - PROCEDURES:
-     MTIM                                      E092      30      48       1   .text       
-     main                                      E0C2      1A      26       1   .text       
+     absoluteValue                             E092       7       7       1   .text       
+     ADC_ISR                                   E099      1A      26       1   .text       
+     MTIM                                      E0B3      31      49       1   .text       
+     main                                      E0E4      1F      31       1   .text       
 - VARIABLES:
      arreglo_medio_paso                         100       8       8       1   .data       
      conteo                                     108       1       1       3   .bss        
      i                                          109       1       1       4   .bss        
+     _Vector_19                                FFD8       2       2       0   .abs_section_ffd8
      _Vector_12                                FFE6       2       2       0   .abs_section_ffe6
+     ADC_value                                  10A       1       1       1   .common     
+     speed                                      10B       1       1       2   .common     
+     range                                      10C       1       1       1   .common     
 MODULE:                 -- start08_c.obj --
 - PROCEDURES:
      loadByte                                  E000       E      14       5   .init       
@@ -147,7 +155,7 @@ MODULE:                 -- start08_c.obj --
 - VARIABLES:
      _startupData                              E084       6       6       4   .startData  
 - LABELS:
-     __SEG_END_SSTACK                           14A       0       0       1               
+     __SEG_END_SSTACK                           14D       0       0       1               
 MODULE:                 -- mc9s08qg8_c.obj --
 - PROCEDURES:
 - VARIABLES:
@@ -159,10 +167,10 @@ MODULE:                 -- mc9s08qg8_c.obj --
      _KBIPE                                       D       1       1       0   .abs_section_d
      _KBIES                                       E       1       1       0   .abs_section_e
      _IRQSC                                       F       1       1       0   .abs_section_f
-     _ADCSC1                                     10       1       1       0   .abs_section_10
+     _ADCSC1                                     10       1       1       1   .abs_section_10
      _ADCSC2                                     11       1       1       0   .abs_section_11
      _ADCCFG                                     16       1       1       0   .abs_section_16
-     _APCTL1                                     17       1       1       0   .abs_section_17
+     _APCTL1                                     17       1       1       1   .abs_section_17
      _ACMPSC                                     1A       1       1       0   .abs_section_1a
      _SCIC1                                      22       1       1       0   .abs_section_22
      _SCIC2                                      23       1       1       0   .abs_section_23
@@ -214,7 +222,7 @@ MODULE:                 -- mc9s08qg8_c.obj --
      _PTBPE                                    1844       1       1       0   .abs_section_1844
      _PTBSE                                    1845       1       1       0   .abs_section_1845
      _PTBDS                                    1846       1       1       0   .abs_section_1846
-     _ADCR                                       12       2       2       0   .abs_section_12
+     _ADCR                                       12       2       2       2   .abs_section_12
      _ADCCV                                      14       2       2       0   .abs_section_14
      _SCIBD                                      20       2       2       0   .abs_section_20
      _TPMCNT                                     41       2       2       0   .abs_section_41
@@ -230,7 +238,7 @@ MODULE:                 -- mc9s08qg8_c.obj --
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  main_c.obj                                  10     74      2
+  main_c.obj                                  13    113      4
   start08_c.obj                                0    132      0
   mc9s08qg8_c.obj                             85      0      0
   other                                       64     16     14
@@ -239,15 +247,19 @@ MODULE STATISTIC
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  MTIM main 
+  absoluteValue ADC_ISR MTIM main 
 SECTION: ".data"
   arreglo_medio_paso 
 SECTION: ".bss"
   conteo i 
 SECTION: ".init"
   loadByte Init _Startup 
+SECTION: ".abs_section_ffd8"
+  _Vector_19 
 SECTION: ".abs_section_ffe6"
   _Vector_12 
+SECTION: ".common"
+  ADC_value speed range 
 SECTION: ".abs_section_0"
   _PTAD 
 SECTION: ".abs_section_1"
@@ -409,12 +421,12 @@ OBJECT LIST SORTED BY ADDRESS
      _KBIPE                                       D       1       1       0   .abs_section_d
      _KBIES                                       E       1       1       0   .abs_section_e
      _IRQSC                                       F       1       1       0   .abs_section_f
-     _ADCSC1                                     10       1       1       0   .abs_section_10
+     _ADCSC1                                     10       1       1       1   .abs_section_10
      _ADCSC2                                     11       1       1       0   .abs_section_11
-     _ADCR                                       12       2       2       0   .abs_section_12
+     _ADCR                                       12       2       2       2   .abs_section_12
      _ADCCV                                      14       2       2       0   .abs_section_14
      _ADCCFG                                     16       1       1       0   .abs_section_16
-     _APCTL1                                     17       1       1       0   .abs_section_17
+     _APCTL1                                     17       1       1       1   .abs_section_17
      _ACMPSC                                     1A       1       1       0   .abs_section_1a
      _SCIBD                                      20       2       2       0   .abs_section_20
      _SCIC1                                      22       1       1       0   .abs_section_22
@@ -451,6 +463,9 @@ OBJECT LIST SORTED BY ADDRESS
      arreglo_medio_paso                         100       8       8       1   .data       
      conteo                                     108       1       1       3   .bss        
      i                                          109       1       1       4   .bss        
+     ADC_value                                  10A       1       1       1   .common     
+     speed                                      10B       1       1       2   .common     
+     range                                      10C       1       1       1   .common     
      _SRS                                      1800       1       1       1   .abs_section_1800
      _SBDFR                                    1801       1       1       0   .abs_section_1801
      _SOPT1                                    1802       1       1       0   .abs_section_1802
@@ -481,8 +496,11 @@ OBJECT LIST SORTED BY ADDRESS
      loadByte                                  E000       E      14       5   .init       
      Init                                      E00E      6D     109       1   .init       
      _Startup                                  E07B       9       9       0   .init       
-     MTIM                                      E092      30      48       1   .text       
-     main                                      E0C2      1A      26       1   .text       
+     absoluteValue                             E092       7       7       1   .text       
+     ADC_ISR                                   E099      1A      26       1   .text       
+     MTIM                                      E0B3      31      49       1   .text       
+     main                                      E0E4      1F      31       1   .text       
+     _Vector_19                                FFD8       2       2       0   .abs_section_ffd8
      _Vector_12                                FFE6       2       2       0   .abs_section_ffe6
 
 *********************************************************************************************
@@ -492,13 +510,13 @@ UNUSED-OBJECTS SECTION
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xE0DC ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xE103 ---- SIZE       4 ---
 Filling bytes inserted
  00080100
-------- ROM-ADDRESS: 0xE0E0 ---- RAM-ADDRESS: 0x100 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xE107 ---- RAM-ADDRESS: 0x100 ---- SIZE       8 ---
 Name of initialized Object : arreglo_medio_paso
  080C040602 030109
-------- ROM-ADDRESS: 0xE0E8 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xE10F ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -507,8 +525,11 @@ OBJECT-DEPENDENCIES SECTION
 ---------------------------------------------------------------------------------------------
 Init                      USES _startupData loadByte 
 _Startup                  USES __SEG_END_SSTACK Init main 
-MTIM                      USES _MTIMSC conteo i arreglo_medio_paso _PTBD 
-main                      USES _PTBDD _MTIMSC _MTIMCLK _MTIMMOD _PTAPE _SRS 
+ADC_ISR                   USES range _ADCR absoluteValue speed ADC_value 
+MTIM                      USES _MTIMSC speed conteo i arreglo_medio_paso _PTBD 
+main                      USES _PTBDD _MTIMSC _MTIMCLK _MTIMMOD _PTAPE _APCTL1 
+                                _ADCSC1 _SRS 
+_Vector_19                USES ADC_ISR 
 _Vector_12                USES MTIM 
 
 *********************************************************************************************
@@ -526,6 +547,12 @@ DEPENDENCY TREE
     |       
     +- main                 (see above)
        
+ _Vector_19          
+ | 
+ +- ADC_ISR             
+    | 
+    +- absoluteValue       
+         
  _Vector_12          
  | 
  +- MTIM                
@@ -536,6 +563,6 @@ STATISTIC SECTION
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 238
+Number of blocks to be downloaded: 6
+Total size of all blocks to be downloaded: 279
 
