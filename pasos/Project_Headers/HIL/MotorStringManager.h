@@ -25,6 +25,7 @@
 
 #define MOTOR_STRING_PORT				B	/* Specify the digital port where the LED string is connected */
 #define MOTOR_STRING_PIN_START		0   /* Specify the starting pin on the digital port where teh LED String is connected */
+#define MOTOR_STRING_NUMBER_OF_PINS 4 /* How many pins will be used for this string */
 
 /*************************************************************************************************/
 /*********************					Function Prototypes					**********************/
@@ -38,6 +39,7 @@
 * \return   void
 -------------------------------------------------------------------------------------------------*/
 void MotorStringManager_Init(void);
+
 
 /*!*-----------------------------------------------------------------------------------------------
 * \name     MotorStringManager_RotateClockwise
@@ -55,20 +57,5 @@ void MotorStringManager_RotateClockwise(void);
 -------------------------------------------------------------------------------------------------*/
 void MotorStringManager_RotateCounterClockwise(void);
 
-/*!*-----------------------------------------------------------------------------------------------
-* \name     LedStringManager_RightEndReached
-* \brief    Restarts the sequence from the start when the last index is reached
-* \param    void.
-* \return   void
--------------------------------------------------------------------------------------------------*/
-bool MotorStringManager_RightEndReached(void);
-
-/*!*-----------------------------------------------------------------------------------------------
-* \name     LedStringManager_RightEndReached
-* \brief    Restarts from the end the sequence when the first index is reached
-* \param    void.
-* \return   void
--------------------------------------------------------------------------------------------------*/
-bool MotorStringManager_LeftEndReached(void);
 
 #endif /* MOTOR_STRING_H_ */
