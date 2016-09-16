@@ -29,24 +29,35 @@ interrupt 12 void MTIM(void){ //para la interrupcion 12, pag 66 manual PARA LOS 
 		conteo++;
 	}*/
 
-	
-	if(contando==conteo){
-		conteo=0;
-		contando=cuentas;
-		PTBD=arreglo_medio_paso[i++];
-		if(i==8){
-			i=0;
+		if(contando==conteo){
+			conteo=0;
+			contando=cuentas;
+			PTBD=arreglo_medio_paso[i++];
+			if(i==8){
+				i=0;
+			}
+		}else{
+			conteo++;
 		}
-	}else{
-		conteo++;
-	}
 
+
+
+}
+void ADC_Init(void){
+	  APCTL1_ADPC0=1;//pin adpc0 pa0 entrada analogica 
+	  ADCSC1=0x20;//una conversion
+
+}
+
+void ADC_Convert(){
+	if(ADCSC1_COCO){
+		cuentas = ((49*(unsigned int)ADCRL)/255+3);
+	}
 }
 
 
 void main(void) {
   EnableInterrupts;
-  /* include your code here */
   PTBDD=0x0F;
   MTIMSC_TOIE=1;
   MTIMCLK=0x04;
@@ -54,14 +65,11 @@ void main(void) {
   MTIMMOD=250;
   PTAPE_PTAPE2=1;
   //adc
-  APCTL1_ADPC0=1;//pin adpc0 pa0 entrada analogica 
-  ADCSC1=0x20;//una conversion
-  
+  //adc init
+  ADC_Init();
   
   for(;;) {
-		if(ADCSC1_COCO==1){
-			cuentas = ((49*(unsigned int)ADCRL)/255+3);
-		}
+	  ADC_Convert();
     __RESET_WATCHDOG();	/* feeds the dog */
 
   } /* loop forever */

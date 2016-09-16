@@ -25,7 +25,7 @@ _startupData is allocated at 0xE084 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
   _Range   pZeroOut       0x100     16
-  _Copy    *toCopyDownBeg 0xE18B
+  _Copy    *toCopyDownBeg 0xE191
 } _startupData;
 
 *********************************************************************************************
@@ -35,8 +35,8 @@ Section Name                    Size  Type     From       To       Segment
 .data                              8   R/W      0x100      0x107   RAM
 .init                            132     R     0xE000     0xE083   ROM
 .startData                        14     R     0xE084     0xE091   ROM
-.text                            249     R     0xE092     0xE18A   ROM
-.copy                             14     R     0xE18B     0xE198   ROM
+.text                            255     R     0xE092     0xE190   ROM
+.copy                             14     R     0xE191     0xE19E   ROM
 .abs_section_ffe6                  2     R     0xFFE6     0xFFE7   .absSeg0
 .abs_section_0                     1   N/I        0x0        0x0   .absSeg1
 .abs_section_1                     1   N/I        0x1        0x1   .absSeg2
@@ -118,7 +118,7 @@ Section Name                    Size  Type     From       To       Segment
 .vectSeg75_vect                    2     R     0xFFFE     0xFFFF   .vectSeg75
 
 Summary of section sizes per section type:
-READ_ONLY (R):         19D (dec:      413)
+READ_ONLY (R):         1A3 (dec:      419)
 READ_WRITE (R/W):       50 (dec:       80)
 NO_INIT (N/I):          55 (dec:       85)
 
@@ -135,7 +135,9 @@ OBJECT-ALLOCATION SECTION
 MODULE:                 -- main_c.obj --
 - PROCEDURES:
      MTIM                                      E092      4D      77       1   .text       
-     main                                      E0DF      36      54       1   .text       
+     ADC_Init                                  E0DF       6       6       1   .text       
+     ADC_Convert                               E0E5      18      24       1   .text       
+     main                                      E0FD      1E      30       1   .text       
 - VARIABLES:
      arreglo_medio_paso                         100       8       8       1   .data       
      conteo                                     108       2       2       3   .bss        
@@ -231,15 +233,15 @@ MODULE:                 -- mc9s08qg8_c.obj --
      _DBGF                                     1814       2       2       0   .abs_section_1814
 MODULE:                 -- rtshc08.o (ansiis.lib) --
 - PROCEDURES:
-     _IDIVMOD                                  E115      69     105       1   .text       
-     _IDIVU_STAR08                             E17E       D      13       1   .text       
+     _IDIVMOD                                  E11B      69     105       1   .text       
+     _IDIVU_STAR08                             E184       D      13       1   .text       
 - VARIABLES:
 
 *********************************************************************************************
 MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
-  main_c.obj                                  16    131      2
+  main_c.obj                                  16    137      2
   start08_c.obj                                0    132      0
   mc9s08qg8_c.obj                             85      0      0
   rtshc08.o (ansiis.lib)                       0    118      0
@@ -249,7 +251,7 @@ MODULE STATISTIC
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  MTIM main _IDIVMOD _IDIVU_STAR08 
+  MTIM ADC_Init ADC_Convert main _IDIVMOD _IDIVU_STAR08 
 SECTION: ".data"
   arreglo_medio_paso 
 SECTION: ".bss"
@@ -496,9 +498,11 @@ OBJECT LIST SORTED BY ADDRESS
      Init                                      E00E      6D     109       1   .init       
      _Startup                                  E07B       9       9       0   .init       
      MTIM                                      E092      4D      77       1   .text       
-     main                                      E0DF      36      54       1   .text       
-     _IDIVMOD                                  E115      69     105       1   .text       
-     _IDIVU_STAR08                             E17E       D      13       1   .text       
+     ADC_Init                                  E0DF       6       6       1   .text       
+     ADC_Convert                               E0E5      18      24       1   .text       
+     main                                      E0FD      1E      30       1   .text       
+     _IDIVMOD                                  E11B      69     105       1   .text       
+     _IDIVU_STAR08                             E184       D      13       1   .text       
      _Vector_12                                FFE6       2       2       0   .abs_section_ffe6
 
 *********************************************************************************************
@@ -533,13 +537,13 @@ rtshc08.o (ansiis.lib):
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xE18B ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xE191 ---- SIZE       4 ---
 Filling bytes inserted
  00080100
-------- ROM-ADDRESS: 0xE18F ---- RAM-ADDRESS: 0x100 ---- SIZE       8 ---
+------- ROM-ADDRESS: 0xE195 ---- RAM-ADDRESS: 0x100 ---- SIZE       8 ---
 Name of initialized Object : arreglo_medio_paso
  080C040602 030109
-------- ROM-ADDRESS: 0xE197 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xE19D ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -550,8 +554,10 @@ Init                      USES _startupData loadByte
 _Startup                  USES __SEG_END_SSTACK Init main 
 MTIM                      USES _MTIMSC conteo contando cuentas i 
                                 arreglo_medio_paso _PTBD 
-main                      USES _PTBDD _MTIMSC _MTIMCLK _MTIMMOD _PTAPE _APCTL1 
-                                _ADCSC1 _ADCR _IDIVU_STAR08 cuentas _SRS 
+ADC_Init                  USES _APCTL1 _ADCSC1 
+ADC_Convert               USES _ADCSC1 _ADCR _IDIVU_STAR08 cuentas 
+main                      USES _PTBDD _MTIMSC _MTIMCLK _MTIMMOD _PTAPE 
+                                ADC_Init ADC_Convert _SRS 
 _IDIVU_STAR08             USES _IDIVMOD 
 _Vector_12                USES MTIM 
 
@@ -562,10 +568,14 @@ DEPENDENCY TREE
  | 
  +- main                
  |  | 
- |  +- _IDIVU_STAR08       
+ |  +- ADC_Init            
+ |  |    
+ |  +- ADC_Convert         
  |     | 
- |     +- _IDIVMOD            
- |          
+ |     +- _IDIVU_STAR08       
+ |        | 
+ |        +- _IDIVMOD            
+ |             
  +- _Startup            
     | 
     +- Init                
@@ -585,5 +595,5 @@ STATISTIC SECTION
 ExeFile:
 --------
 Number of blocks to be downloaded: 5
-Total size of all blocks to be downloaded: 413
+Total size of all blocks to be downloaded: 419
 
