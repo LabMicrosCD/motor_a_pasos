@@ -68,6 +68,7 @@ void main(void) {
   //adc init
   ADC_Init();
   
+
   for(;;) {
 	  ADC_Convert();
     __RESET_WATCHDOG();	/* feeds the dog */
